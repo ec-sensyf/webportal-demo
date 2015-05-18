@@ -108,7 +108,7 @@ Starting with the Web Portal skeleton, the users can adapt it in order to make i
  
 Regarding the formatting and Style of the WebPortal, the font, size and color of the text presented on the portal can be defined/changed on the file webportal.css (/static/webportal.css).
 
-This is a regular CSS file where are defined the text style for each level defined on the HTML (e.g. headers < h1 >, < h2 >; paragraph <p></p>).
+This is a regular CSS file where are defined the text style for each level defined on the HTML (e.g. headers < h1 >, < h2 >; paragraph < p >).
 
 The background image is also defined on this file. To change the background image the developer shall place the new image inside the directory /static/pics and change the image path into the webportal.css (/static/webportal.css).
 
