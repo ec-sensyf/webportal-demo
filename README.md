@@ -51,7 +51,6 @@ The python modules listed below shall be installed:
   - Flask
 
 To install flask on your environment try:
-
   ```bash
   $ sudo easy_install virtualenv
   ```
