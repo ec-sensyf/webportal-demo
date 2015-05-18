@@ -9,7 +9,7 @@ The code inside the files, which will be installed on your system, contains comm
 
 ----------------------------------------------------------------------------------------------------------------------
 
-<h3>DESCRIPTION<h3>
+<h3>DESCRIPTION</h3>
 
 The new SenSyF SDK tool (sensyf-webportal) is a dissemination tool which helps the users to display their final results in a more appellative way.
 With the installation of this RPM (sensyf-webportal), the user has the skeleton of a Web Portal which is used, in the SDK context, to demonstrate the processing power and the
@@ -31,7 +31,7 @@ will drive the user and help them with the Web Portal development.
 
 ----------------------------------------------------------------------------------------------------------------------
 
-**ACCESS SENSYF-WEBPORTAL**
+<h3>ACCESS SENSYF-WEBPORTAL</h3>
 
 The sensyf-webportal tool is available through a GitHub repository which can be cloned in order to make the Web Portal skeleton available in the user environment.
 In order to clone the sensyf-webportal repository, the user must follow the procedure presented below.
@@ -44,7 +44,7 @@ The structure mounted in the user environment is presented on the section "Struc
 
 ----------------------------------------------------------------------------------------------------------------------
 
-**REQUIREMENTS**
+<h3>REQUIREMENTS</h3>
 
 The python modules listed below shall be installed:
 
@@ -64,7 +64,7 @@ If you use Ubuntu, try:
   ```
 ----------------------------------------------------------------------------------------------------------------------
 
-**STRUCTURE & DEFINITIONS**
+<h3>STRUCTURE & DEFINITIONS</h3>
 
 The skeleton of the Demonstrative Web Portal follows the structure presented below.
 
@@ -100,11 +100,11 @@ be better explained on the section "*FLASK CONCEPT*".
 
 ----------------------------------------------------------------------------------------------------------------------
 
-**ADAPTATIONS**
+<h3>ADAPTATIONS</h3>
 
 Starting with the Web Portal skeleton, the users can adapt it in order to make it a good dissemination platform for their services. Many adaptations can be performed and they can be divided into three groups:
 
-- **Formatting & Style**
+<h4>Formatting & Style</h4>
  
 Regarding the formatting and Style of the WebPortal, the font, size and color of the text presented on the portal can be defined/changed on the file webportal.css (/static/webportal.css).
 
@@ -138,7 +138,7 @@ If, for example, the user wants to display the results of a workflow using a dif
 
 Inside these sections it is possible to change them aspect by using HTML flags and tags.
 
-- **Javascript Functions**
+<h4>Javascript Functions</h4>
  
 Basically, the JavaScript functions are what define the behavior of each element of the portal defined in the HTML file. The JavaScript files (js) are all contained into the static directory.
 
@@ -156,7 +156,7 @@ Inside the webportal.js file (/static/webportal.js), the user can find the initi
 
 **Note 2:** Unlike the WPS Client, the map is initialized into the webportal.html file. To change the map options the user shall update the function "initialize" into webportal.html
 
-- **External Functions**
+<h4>External Functions</h4>
 
 The concept of "external functions" includes all the functions that are not Javascript functions (e.g. python functions). For example, the oil spill usecase has the need of check the workflow outputs inside a URL. This can be done by using python and the function that contains the procedure was placed into the file app.py.
 
@@ -166,13 +166,13 @@ The file app.py, which allows to have a simple app up and running, will be bette
 
 ----------------------------------------------------------------------------------------------------------------------
 
-**JQUERY-WPS-CLIENT**
+<h3>JQUERY-WPS-CLIENT</h3>
 
 A visual interactive webapp client to OGC Web Processing Service developed as jQuery plugin.
 
 This section explains how is done the connection between the Web Portal and the sandbox/cluster. This connection is already done in the installed skeleton, however, it is important to explain how the WPS Client works.
 
-- **Application Rule**
+<h4>Application Rule</h4>
  
 To trigger a workflow from the Web Portal, by using the WPS interface of the Sandbox and a WPS client, it is strictly necessary to write properly the application.xml in order to be ingested from the WPS server running on the sandbox/cluster.
 
@@ -186,7 +186,7 @@ The condition is to have inside the application descriptor (application.xml), at
 ```
 Without this, it is impossible to have an application exposed as a WPS Service.
 
-- **JQUERY-WPS-CLIENT CONFIGURATION**
+<h4>JQUERY-WPS-CLIENT CONFIGURATION</h4>
 
 The following js/css dependencies were included into the webportal.html (/templates/webportal.html):
 
@@ -239,9 +239,9 @@ $(document).ready(function(){
 
 ----------------------------------------------------------------------------------------------------------------------
 
-**FLASK CONCEPT**
+<h3>FLASK CONCEPT</h3>
 
-- **Flask**
+<h4>Flask</h4>
 
 Flask is a Python web framework built with a small core and easy-to-extend philosophy.
 
@@ -271,7 +271,7 @@ def python_funtion():
 
 The previous examples are contained into the app.py file. Follow the code comments there to test the examples.
 
-- **JSON**
+<h4>JSON</h4>
 
 Flask also contains JSON that basically allows to pass values from the python functions to the JavaScript functions.
 
@@ -302,7 +302,7 @@ Again, the previous examples are contained into the app.py file and webportal.js
 
 ----------------------------------------------------------------------------------------------------------------------
 
-**RUN EXAMPLE**
+<h3>RUN EXAMPLE</h3>
 
 Finally, to launch the Flask app, the user shall follows the procedure described below.
 
