@@ -31,6 +31,19 @@ will drive the user and help them with the Web Portal development.
 
 ----------------------------------------------------------------------------------------------------------------------
 
+**ACCESS SENSYF-WEBPORTAL**
+
+The sensyf-webportal tool is available through a GitHub repository which can be cloned in order to make the Web Portal skeleton available in the user environment.
+In order to clone the sensyf-webportal repository, the user must follow the procedure presented below.
+
+```bash
+$ cd
+$ git clone git@github.com:ec-sensyf/sensyf-webportal.git
+```
+The structure mounted in the user environment is presented on the section "Structure & Definitions".
+
+----------------------------------------------------------------------------------------------------------------------
+
 **REQUIREMENTS**
 
 The python modules listed below shall be installed:
