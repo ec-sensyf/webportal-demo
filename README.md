@@ -1,4 +1,4 @@
-### SENSYF-WEBPORTAL DEMO - MOUNT A DEMONSTRATIVE WEB PORTAL
+<h2>SENSYF-WEBPORTAL DEMO - MOUNT A DEMONSTRATIVE WEB PORTAL</h2>
 
 Skeleton of the SenSyF Demonstrative Web Portal including WPS client
 
@@ -9,7 +9,7 @@ The code inside the files, which will be installed on your system, contains comm
 
 ----------------------------------------------------------------------------------------------------------------------
 
-**DESCRIPTION**
+<h3>DESCRIPTION<h3>
 
 The new SenSyF SDK tool (sensyf-webportal) is a dissemination tool which helps the users to display their final results in a more appellative way.
 With the installation of this RPM (sensyf-webportal), the user has the skeleton of a Web Portal which is used, in the SDK context, to demonstrate the processing power and the
