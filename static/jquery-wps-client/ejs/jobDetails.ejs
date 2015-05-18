@@ -1,0 +1,29 @@
+<%
+if (this.attr("length")!=0)
+	this.each(function(job) {
+		//if (job.attr("active")==true) {			
+		%>
+		<div data-active="<%= job.attr("active") %>" style="display:<%= job.attr("active") ? "block" : "none" %>">
+			<h4>Job Info</h4>
+			<dl>
+				<dt>Algorithm Name</dt><dd><%= job.attr("title") %></dd>
+				<dt>Started at</dt><dd><%= job.attr("time") %></dd>
+				<dt>Status</dt>
+				<dd>
+					<% if (job.attr("status")==Status.PENDING) { %>
+						<span class="label label-warning">Pending</span>
+					<% } else if (job.attr("status")==Status.SUCCESS) { %>
+						<span class="label label-success">Success</span>
+					<% } else if (job.attr("status")==Status.ERROR) { %>
+						<span class="label label-important">Failed</span>
+					<% } else { %>
+						<span class="label label-warning">Running</span>&nbsp;&nbsp;&nbsp;<div class='wpsClient-bigPreloader'></div></p>
+						</br>
+					<% } %>
+				</dd>
+			</dl>
+		</div>
+		<%				
+		//}
+	});
+%>

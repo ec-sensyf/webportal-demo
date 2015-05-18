@@ -1,0 +1,16 @@
+h1   {color:#99cc33}
+h3   {color:#99cc33}
+strong   {color:#3399cc}
+p   {color:black}
+h1   {font-family: Arial, Helvetica, sans-serif;}
+h3   {font-family: Arial, Helvetica, sans-serif;}
+strong   {font-family: Arial, Helvetica, sans-serif;}
+p   {font-family: Arial, Helvetica, sans-serif;}
+dl   {font-family: Arial, Helvetica, sans-serif;}
+
+/* The font, size and color of the text presented on the portal shall be defined here
+ 
+   It is also possible to change the code lines above */
+
+body {background-image: url('/static/pics/ocean-background.jpg');} /* filepath of the background image*/
+
