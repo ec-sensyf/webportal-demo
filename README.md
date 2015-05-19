@@ -34,6 +34,9 @@ will drive the user and help them with the Web Portal development.
 <h3>ACCESS SENSYF-WEBPORTAL</h3>
 
 The sensyf-webportal tool is available through a GitHub repository which can be cloned in order to make the Web Portal skeleton available in the user environment.
+
+To have access to the sensyf-webportal demo **click the button "Download ZIP"** or **clone the repository** in your environement.
+
 In order to clone the sensyf-webportal repository, the user must follow the procedure presented below.
 
 ```bash
