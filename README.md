@@ -326,7 +326,6 @@ http://127.0.0.1:8080/add_url
 ```
 In this case, an "Hello World!!!" shall appear.
 
-The last test test you can do is to uncomment the line that declares a button on the webportal.html file (/templates/webportal.html) and use the button to get an alert
-(defined on /static/webportal.js) with the "Hello World!!!" from the Python function (app.py). The idea of this last test is to show that is possible to get, on the JavaScript functions, values from the Python functions.
+The last test test you can do is to uncomment the line that declares a button on the webportal.html file (/templates/webportal.html) and use the button to get an alert (defined on /static/webportal.js) with the "Hello World!!!" from the Python function (app.py). The idea of this last test is to show that is possible to get, on the JavaScript functions, values from the Python functions.
 
 ----------------------------------------------------------------------------------------------------------------------
