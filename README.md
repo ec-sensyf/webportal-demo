@@ -310,7 +310,7 @@ Again, the previous examples are contained into the app.py file and webportal.js
 Finally, to launch the Flask app, the user shall follows the procedure described below.
 
 ```bash
-$ cd SenSyF_WebPortal
+$ cd webportal-demo-master
 $ ./app.py
 ```
 
