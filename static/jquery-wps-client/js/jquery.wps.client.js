@@ -302,7 +302,7 @@ $.fn.wpsClient = function(options){
 				$field.append("<option>"+$(this).text()+"</option>");
 			});
 		} else				
-			$field = $("<input type='text' style='width:150px;' value='12-12-2014'/>");
+			$field = $("<input type='text' style='width:150px;' value='2014-12-12'/>");
 		
 		$field.attr({
 			id: "field_" + name,
