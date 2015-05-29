@@ -65,6 +65,10 @@ If you use Ubuntu, try:
   ```bash
   $ sudo apt-get install python-virtualenv
   ```
+or:
+  ```bash
+  $ sudo apt-get install python-flask
+  ```
 ----------------------------------------------------------------------------------------------------------------------
 
 <h3>STRUCTURE & DEFINITIONS</h3>
