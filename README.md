@@ -18,8 +18,8 @@ This Web Portal was originally created to display the outputs of a usecase that 
 
 The Web Portal contains two main parts which are:
 
-- WPS Client (jquery-wps-client) - Contains the application deployed on the sandbox/cluster, the fields to type the initial parameters and a button "Start Test" which,
-when pressed, starts a workflow run on the SenSyF Framework.
+- WPS Client (jquery-wps-client) - Reuses the application code made available as part of the Developer Cloud Sandbox's Dashboard (invoke tab), providing the WPS Client fields to type the initial parameters, and a button "Start Test" which,
+when pressed, starts an application workflow configured for exposing the WPS interface.
 
 - Embedded Map (Google Maps API) - In this Google Maps instance are displayed the outputs of the workflow. In the original case, the outputs are KML files containing the oil spills
 detected. During the run, each time an oil spill is detected, a marker will appear and, when clicked, a zoom in will occur and the KML is loaded (the oil leakage can be watched over
@@ -92,8 +92,7 @@ Each component of the structure has a different meaning and feature for the oper
 **static -** This directory contains basically all the functions of the Web Portal contained into the JavaScript file (webportal.js).
 It also contains the CSS file which describe the formatting and fonts of the portal (webportal.css).
 
-**jquery-wps-client -** This directory is placed inside static directory and contains all the javascript files, css files and imports which allow the connection between the Web Portal
-and the sandbox/cluster. This connection is done by using the WPS interface of the Sandbox and a WPS client.
+**jquery-wps-client -** This directory is placed inside static directory and contains all the javascript files, css files and imports which allow the connection between the Web Portal and the sandbox/cluster. This connection is done by using the WPS interface of the Sandbox and a WPS client.
 
 **pics -** This folder contains all the pics presented on the Web Portal (e.g. background pic, sensyf icons, company_logos, etc.).
 
