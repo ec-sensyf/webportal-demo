@@ -4,10 +4,12 @@ if (this.attr("length")!=0)
 		//if (job.attr("active")==true) {			
 		%>
 		<div data-active="<%= job.attr("active") %>" style="display:<%= job.attr("active") ? "block" : "none" %>">
+			<h3>Job <b><%= job.attr("jobName") %></b></h3>
 			<h4>Job Info</h4>
-			<dl>
+			<dl class='dl-horizontal'>
 				<dt>Algorithm Name</dt><dd><%= job.attr("title") %></dd>
 				<dt>Started at</dt><dd><%= job.attr("time") %></dd>
+				<dt>Status/Result Location</dt><dd><a href="<%= job.attr("statusLocation") %>" target="_blank"><i class="icon-external-link"></i> <%= job.attr("statusLocation") %></a></dd>
 				<dt>Status</dt>
 				<dd>
 					<% if (job.attr("status")==Status.PENDING) { %>
@@ -19,6 +21,10 @@ if (this.attr("length")!=0)
 					<% } else { %>
 						<span class="label label-warning">Running</span>&nbsp;&nbsp;&nbsp;<div class='wpsClient-bigPreloader'></div></p>
 						</br>
+						<small class="percents" style="float: left; margin-right: 5px;"><%= job.attr("percent") %>%</small>
+						<div class="progress progress-striped active jobProgress" style="width:300px">
+ 								<div class="bar" style="width: <%= job.attr("percent") %>%;"><%= job.attr("percent") %></div>
+						</div>
 					<% } %>
 				</dd>
 			</dl>
