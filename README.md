@@ -226,6 +226,7 @@ $(document).ready(function(){
 	  baseUrl: "http://<sandbox/cluster IP>:8080/wps/WebProcessingService" 
 	});
 });
+```
 
 **IMPORTANT 1:** To connect the WPS Client to your sandbox/cluster, the baseurl shall be http: <sandbox/cluster IP>:8080/wps/WebProcessingService and the user must insert the correct IP
 
@@ -244,8 +245,6 @@ Flask is used inside the python script (app.py) to have a simple app up and runn
 The idea is to have an app running in the chosen host (e.g. 127.0.0.1) and port (e.g. 8080).
 
 Then it is necessary to declare the app.route and assign the HTML file to it (webportal.html). Note that the name of the folder containing the HTML file shall always be "templates" or it won't work.
-```python
-```
 
 **EXAMPLE:**
 
