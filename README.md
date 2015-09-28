@@ -243,7 +243,7 @@ Flask is used inside the python script (app.py) to have a simple app up and runn
 
 The idea is to have an app running in the chosen host (e.g. 127.0.0.1) and port (e.g. 8080).
 
-Then it is necessary to declare the app.route and assign the HTML file to it (webportal.html). Note that the name of the folder containing the HTML file shall always be "templates" or this will not work.
+Then it is necessary to declare the app.route and assign the HTML file to it (webportal.html). The name of the folder containing the HTML file shall always be "templates" or it will not work.
 
 **EXAMPLE:**
 
