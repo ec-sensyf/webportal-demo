@@ -1,33 +1,29 @@
-<h2>SENSYF-WEBPORTAL DEMO - MOUNT A DEMONSTRATIVE WEB PORTAL</h2>
+<h2>SENSYF-WEBPORTAL DEMO 2.0- MOUNT A DEMONSTRATIVE WEB PORTAL</h2>
 
-Skeleton of the SenSyF Demonstrative Web Portal including WPS client
+Version 2.0 of the Skeleton of the SenSyF Demonstrative Web Portal including WPS client
 
 ----------------------------------------------------------------------------------------------------------------------
 
 The content of this README is also presented on the manual page of the tool.
-The code inside the files, which will be installed on your system, contains comments to help you with the instructions described during this README.
+The code inside the files, which will be downloaded to your system, contains comments to help you with the instructions described during this README.
 
 ----------------------------------------------------------------------------------------------------------------------
 
 <h3>DESCRIPTION</h3>
 
-The new SenSyF SDK tool (sensyf-webportal) is a dissemination tool which helps the users to display their final results in a more appellative way.
-With the installation of this RPM (sensyf-webportal), the user has the skeleton of a Web Portal which is used, in the SDK context, to demonstrate the processing power and the
-scalability of the SenSyF Platform.
+The new version of the SenSyF SDK tool (sensyf-webportal.2.0) is a dissemination tool which helps the users to display their final results in a more appellative way.
+With the download of this set of files (sensyf-webportal2.0), the user has the skeleton of a Web Portal which is used, in the SDK context, to demonstrate the processing power and the scalability of the SenSyF Platform.
 This Web Portal was originally created to display the outputs of a usecase that detects the oil spills on the Mediterranean Sea by using, as input, SENTINEL-1 SAR data.
 
-The Web Portal contains two main parts which are:
+The new version of the Web Portal contains three main parts which are:
 
-- WPS Client (jquery-wps-client) - Reuses the application code made available as part of the Developer Cloud Sandbox's Dashboard (invoke tab), providing the WPS Client fields to type the initial parameters, and a button "Start Test" which,
-when pressed, starts an application workflow configured for exposing the WPS interface.
+- WPS Client (jquery-wps-client) - Reuses the application code made available as part of the Developer Cloud Sandbox's Dashboard (invoke tab), providing the WPS Client fields to type the initial parameters, and a button "Start Test" which, when pressed, starts an application workflow configured for exposing the WPS interface.
 
-- Embedded Map (Google Maps API) - In this Google Maps instance are displayed the outputs of the workflow. In the original case, the outputs are KML files containing the oil spills
-detected. During the run, each time an oil spill is detected, a marker will appear and, when clicked, a zoom in will occur and the KML is loaded (the oil leakage can be watched over
-the map).
+- Embedded Map (Google Maps API) - In this Google Maps instance are displayed the outputs of the workflow. In the original case, the outputs are KML files containing the oil spills detected. During the run, each time an oil spill is detected, a marker will appear and, when clicked, a zoom in will occur and the KML is loaded (the oil leakage can be watched over the map).
 
-The original usecase is just an idea of how this Web Portal can be used to disseminate the outputsof a workflow. The folders and files installed are only the skeleton of the Web
-Portal and do not allow to test the oil spill usecase. The idea is to give to the users a baseline to build their own Web Portals adapted to their usecases. The following sections
-will drive the user and help them with the Web Portal development.
+- Processing Time and Cost counter - In this section the user can follow the processing time and the associated cost during the workflow run.
+
+The original usecase is just an idea of how this Web Portal can be used to disseminate the outputs of a workflow. The folders and files installed are only the skeleton of the Web Portal and do not allow to test the oil spill usecase. The idea is to give to the users a baseline to build their own Web Portals adapted to their usecases. The following sections will drive the user and help them with the Web Portal development.
 
 ----------------------------------------------------------------------------------------------------------------------
 
@@ -37,12 +33,6 @@ The sensyf-webportal tool is available through a GitHub repository which can be 
 
 To have access to the sensyf-webportal demo **click the button "Download ZIP"** or **clone the repository** in your environement.
 
-In order to clone the sensyf-webportal repository, the user must follow the procedure presented below.
-
-```bash
-$ cd
-$ git clone git@github.com:ec-sensyf/sensyf-webportal.git
-```
 The structure mounted in the user environment is presented on the section "Structure & Definitions".
 
 ----------------------------------------------------------------------------------------------------------------------
@@ -97,12 +87,11 @@ It also contains the CSS file which describe the formatting and fonts of the por
 **pics -** This folder contains all the pics presented on the Web Portal (e.g. background pic, sensyf icons, company_logos, etc.).
 
 
-**templates -** In this directory is contained the HTML file that builds the Web Portal and connects buttons to their correspondent functions described on the JavaScript files.
-Basically, the webportal.html is the face of the Web Portal.
+**templates -** This directory contains the new HTML file that builds the Web Portal and connects buttons to their correspondent functions described on the JavaScript files.
+Basically, the webportal.html is the face of the new Web Portal.
 
 
-**app.py -** This Python file uses "*Flask*" which is a Python Web Application Framework which allows to have a simple app up and running. The creation and use of this applications will
-be better explained on the section "*FLASK CONCEPT*".
+**app.py -** This Python file uses "*Flask*" which is a Python Web Application Framework which allows to have a simple app up and running. The creation and use of this applications will be better explained on the section "*FLASK CONCEPT*".
 
 ----------------------------------------------------------------------------------------------------------------------
 
@@ -118,17 +107,15 @@ This is a regular CSS file where are defined the text style for each level defin
 
 The background image is also defined on this file. To change the background image the developer shall place the new image inside the directory /static/pics and change the image path into the webportal.css (/static/webportal.css).
 
-**IMPORTANT:** This file webportal.js (/static/webportal.css) shall be "imported" in the file webportal.html (/templates/webportal.html):
+**IMPORTANT:** This file webportal.css (/static/webportal.css) shall be "imported" in the file webportal.html (/templates/webportal.html):
 
 ```HTML
 <link type="text/css" rel="stylesheet" href="/static/webportal.css" />
 ```
 
-The logos displayed at the top and bottom can also be changed. The new logo images shall be also placed into the directory /static/pics with the following sizes, 170x85 and 100x50, respectively for the top logo and bottom logo. After this, the filepath of each image shall be changed inside the webportal.html (/templates/webportal.html). The filepaths to the logo images can be found at the top and at the bottom of the webportal.html file.
-
 Considering that the webportal.html (/templates/webportal.html) is the face of the Web Portal, other changes regarding the aspect and the sections of the portal can be changed updating this file.
 
-As it was explained in the section DESCRIPTION, the portal has two main sections. The WPS Client and the Map are implemented, respectively, into the jquery-wps-client files and into the Google Maps API. To have them available into the webportal.html, some "imports" shall be done at the beggining of the file. Check the two HTML line below which can be found into the webportal.html file (/templates/webportal.html):
+As it was explained in the section DESCRIPTION, the portal has three main sections. The WPS Client and the Map are implemented, respectively, into the jquery-wps-client files and into the Google Maps API. To have them available into the webportal.html, some "imports" shall be done at the beggining of the file. Check the two HTML line below which can be found into the webportal.html file (/templates/webportal.html):
 
 ```HTML
 <script type="text/javascript" src="/static/jquery-wps-client/js/jquery.wps.client.js"></script>
@@ -139,10 +126,12 @@ If, for example, the user wants to display the results of a workflow using a dif
 
 ```HTML
 <div id="myWpsDiv"></div>
-<div id="map-canvas" style="width: 955px; height: 455px;"></div>
+<div id="map-canvas"></div>
 ```
 
-Inside these sections it is possible to change them aspect by using HTML flags and tags.
+Inside these sections it is possible to change their aspect by using HTML flags and tags.
+
+The third section is a new function implemented on this Webportal Skeleton. The Processing Time and Cost counter allows the user to follow the run time and the associated cost. This new feature gets the number of nodes of the sandbox/cluster through the IP (must be manually inserted by the user on the file app.py, into the function find_num_nodes).
 
 <h4>Javascript Functions</h4>
  
@@ -150,7 +139,7 @@ Basically, the JavaScript functions are what define the behavior of each element
 
 Inside /static/ we have the jquery-wps-client where is implemented the WPS Client (check JQUERY-WPS-CLIENT), which allows the connection between portal and sandbox/cluster and the webportal.js file where shall be implemented all the functions related with the Web Portal.
 
-Inside the webportal.js file (/static/webportal.js), the user can find the initialization of the WPS Client. Every javascript functions related with the portal shall be placed here. For example, for the oil spill usecase, two functions were placed into this file (one to receive the workflow outputs and other to display them on the map).
+Inside the webportal.js file (/static/webportal.js), the user can find the initialization of the WPS Client. On this version 2.0 contains also the function for the time and cost counter. Every javascript functions related with the portal shall be placed here. For example, for the oil spill usecase, two functions were placed into this file (one to receive the workflow outputs and other to display them on the map).
 
 **IMPORTANT:** This file webportal.js (/static/webportal.js) shall be "imported" in the file webportal.html (/templates/webportal.html):
 
@@ -166,7 +155,7 @@ Inside the webportal.js file (/static/webportal.js), the user can find the initi
 
 The concept of "external functions" includes all the functions that are not Javascript functions (e.g. python functions). For example, the oil spill usecase has the need of check the workflow outputs inside a URL. This can be done by using python and the function that contains the procedure was placed into the file app.py.
 
-All the external functions shall be placed into this file. The returns of these functions can be passed to the JavaScrip function by using JSON from Flask (check the section FLASK CONCEPT).
+All the external functions shall be placed into this file. The returns of these functions can be passed to the JavaScrip functions by using JSON from Flask (check the section FLASK CONCEPT).
 
 The file app.py, which allows to have a simple app up and running, will be better explained in the section "*FLASK CONCEPT*". To learn how to run the app created check the section "*RUN EXAMPLE*".
 
@@ -225,7 +214,7 @@ Also into the webportal.html (/static/webportal.html), an empty container was ad
 <body>
     ....
     <div id="myWpsDiv"></div>
-    ...
+    ....
 </body>
 ```
 
@@ -234,12 +223,11 @@ When the page is loaded ($.ready), the plugin is called starting by the jquery s
 ```Javascript
 $(document).ready(function(){
 	var wpsc = $("#myWpsDiv").wpsClient({
-	  baseurl: "http://wps01.i-marine.d4science.org/wps/WebProcessingService"
+	  baseUrl: "http://<sandbox/cluster IP>:8080/wps/WebProcessingService" 
 	});
 });
-```
 
-**IMPORTANT 1:** To connect the WPS Client to your sandbox/cluster, the baseurl shall be http://<sandbox/cluster IP>:8080/wps/WebProcessingService
+**IMPORTANT 1:** To connect the WPS Client to your sandbox/cluster, the baseurl shall be http: <sandbox/cluster IP>:8080/wps/WebProcessingService and the user must insert the correct IP
 
 **IMPORTANT 2:** The VPN connection shall always be opened
 
@@ -265,7 +253,7 @@ def index():
     return render_template("webportal.html") # HTML file of the Web Portal
 ```
 
-As it was explained before, other function (python functions) shall be described into the app.py. To do this, an URL can be added to the route and when this url is typed in the browser, the function will be called.
+As it was explained before, other functions (python functions) shall be described into the app.py. To do this, an URL can be added to the route and when this url is typed in the browser, the function will be called.
 
 **EXAMPLE:**
 
