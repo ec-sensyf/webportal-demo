@@ -33,6 +33,14 @@ The sensyf-webportal tool is available through a GitHub repository which can be 
 
 To have access to the sensyf-webportal demo **click the button "Download ZIP"** or **clone the repository** in your environement.
 
+In order to clone the sensyf-webportal repository, the user must follow the procedure presented below.
+
+```bash
+$ cd
+$ git clone https://github.com/ec-sensyf/dcs-sdk-oil-spill-detection.git
+$ git checkout tags/v2.0
+```
+
 The structure mounted in the user environment is presented on the section "Structure & Definitions".
 
 ----------------------------------------------------------------------------------------------------------------------
