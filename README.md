@@ -1,4 +1,4 @@
-<h2>SENSYF-WEBPORTAL DEMO 2.0- MOUNT A DEMONSTRATIVE WEB PORTAL</h2>
+<h2>SENSYF-WEBPORTAL DEMO 2.0 - MOUNT A DEMONSTRATIVE WEB PORTAL</h2>
 
 Version 2.0 of the Skeleton of the SenSyF Demonstrative Web Portal including WPS client
 
