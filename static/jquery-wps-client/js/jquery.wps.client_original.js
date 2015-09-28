@@ -40,10 +40,14 @@ function selectInputText(inputEl){
 	inputEl.select();
 }
 
+
+
+
 ;(function($){
 
 $.fn.wpsClient = function(options){
-
+	
+	
 	function startWpsWebClient() {
 		
 		data.jobs = new can.Observe.List([]);
@@ -52,9 +56,9 @@ $.fn.wpsClient = function(options){
 		console.log("BASE URL", options.baseUrl);
 		
 		// create control for jobs list
-		
 		JobsControl = can.Control({
 			init: function(element, opt){
+				$(element).html(can.view.render("/static/jquery-wps-client/ejs/jobsList.ejs", data.jobs));
 				$jobDetails.html(can.view.render("/static/jquery-wps-client/ejs/jobDetails.ejs", data.jobs));
 			},
 			"a click": function(elem, event){
@@ -254,6 +258,10 @@ $.fn.wpsClient = function(options){
 		//window.$xml=$xml;
 		var $processDescription = $xml.find("ProcessDescription"),
 			$div = $formArea.empty()
+			.append("<h4>" + $processDescription.findNsURI(options.ns.ows, "Title").first().text() + "</h4>")
+			.append("<blockquote><p>" +
+					$processDescription.findNsURI(options.ns.ows, "Abstract").first().text() +
+				"</p></blockquote>");
 
 		var $form = $("<form>");
 		$div.append($form);
@@ -267,13 +275,46 @@ $.fn.wpsClient = function(options){
 		var $submitButton = $(
 				"<div class='btn-group'>" +
 				"	<a id='runAsync' href='javascript://' class='btn btn-info'>" +
-				"		<i class='icon-play-sign'></i>&nbsp;&nbsp;Start Test" +
+				"		<i class='icon-play-sign'></i>&nbsp;&nbsp;Run Process" +
 				"	</a>" +
+				"	<a class='btn btn-info dropdown-toggle' data-toggle='dropdown' href='#'>" +
+				"		<span class='caret'></span>" +
+				"	</a>" +
+				"	<ul class='dropdown-menu'>" +
+				"		<li><a id='runSync' tabindex='-1' href='javascript://'>" +
+				"		<i class='icon-play-circle'></i>&nbsp;&nbsp;Run in Sync mode" +
+				"		</a></li>" +
+				"	</ul>" +
 				"</div>");
 		$submitButton.find("#runAsync").click(function(){
 			return algorithmSubmit(id, title, responseDocument, false);
 		});
-
+		$submitButton.find("#runSync").click(function(){
+			return algorithmSubmit(id, title, responseDocument, true);
+		});
+		
+		var $showUrlButton = $("<a href='#' class='btn'><i class='icon-link'></i>&nbsp;&nbsp;Show WPS Url request</a>").click(function(){
+			var //base = (options.baseUrl.startsWith("http") ? "" : (window.location.origin + window.location.pathname).replace("client2.html","").replace("client.html","")),
+				formData = getDataFromForm(id, responseDocument),
+				urlSync = formData.urlSync,
+				urlAsync = formData.urlAsync;
+			bootbox.alert(
+				"<br/><p><strong>Async Url Request</strong><br/>" + 
+					"<input type='text' id='urlAsync' onclick='selectInputText(this);' " +
+					"style='width:500px' value='" + urlAsync + "'>" +
+				"</p>" +
+				"<p><strong>Sync Url Request</strong><br/>" +
+					"<input type='text' id='urlSync' onclick='selectInputText(this);' " +
+					"style='width:500px' value='" + urlSync + "'>" +
+				"</p>"
+			);
+			return false;
+		});;
+		var $openUrlButton = $("<a href='#' target='_blank' class='btn'><i class='icon-external-link'></i>&nbsp;&nbsp;Open WPS Url</a>").click(function(){
+			var url = getDataFromForm(id, responseDocument).urlAsync;
+			$(this).attr("href", url);
+			return true;
+		});
 		$form.append("<br/><br/>")
 			.append($submitButton)
 			.append("&nbsp;&nbsp;")
@@ -302,7 +343,7 @@ $.fn.wpsClient = function(options){
 				$field.append("<option>"+$(this).text()+"</option>");
 			});
 		} else				
-			$field = $("<input type='text'/>");
+			$field = $("<input type='text' />");
 		
 		$field.attr({
 			id: "field_" + name,
@@ -501,14 +542,34 @@ $.fn.wpsClient = function(options){
 					console.log(XMLHttpRequest, textStatus, errorThrown);
 				});
 			}
-		} 
+			
+		} else if (job.status==Status.ERROR){
+			$div.empty().append(
+				"<div class='alert alert-block alert-error'>" + 
+				"	<button type='button' class='close' data-dismiss='alert'>&times;</button>" +
+				"	<h4><i class='icon-exclamation-sign'></i> Exception</h4>" +
+					$xml.findNsURI(options.ns.ows, 'ExceptionText').text()  +
+				"</div>"
+			);
+		}
 		
 		
 		// print the xml result
 		
 		$divXmlResult = $("<div style='margin-top:20px'></div>");
-		
-		
+		$showXmlButton = $("<a href='#' class='btn btn-small'>Show the XML result.</a>");
+		$showXmlButton.click(function(){
+			var xmlString = "";
+			if (window.ActiveXObject){ 
+				xmlString = $xml.xml; 
+			} else {
+				var oSerializer = new XMLSerializer(); 
+				xmlString = oSerializer.serializeToString($xml[0]);
+			}
+			$divXmlResult.html($("<pre class='prettyprint xmlResult'>").text(formatXml(xmlString)));
+			prettyPrint();
+			return false;
+		});
 		$divXmlResult.append($showXmlButton);
 		$div.append($divXmlResult);
 
@@ -687,19 +748,21 @@ $.fn.wpsClient = function(options){
 	// create html content
 	$mainDiv.empty()
 	.append(""
-			+"	<div>"
-			+"		<div class='wpsClient-roundedArea wpsClient-panel'>"
+			+"	<div class='row-fluid'>"
+			+"		<div class='span4 wpsClient-roundedArea wpsClient-panel'>"
 			+"			<div>"
 			+"				<input class='checkboxPolling' type='checkbox' checked='checked' value='true' style='display:none'/>"
-			+"				<h4><i class='icon-list-alt'></i> Process List <a class='wpsClient-link' href='"+data.url+"' target='_blank'></a></h4>"
+			+"				<h4><i class='icon-list-alt'></i> Process List <a class='wpsClient-link' href='"+data.url+"' target='_blank'><i class='icon-external-link'></i> (GetCapabilities)</a></h4>"
 			+"				<div class='algorithmList'></div>"
-			+"				<div class='jobDetailsArea'></div>"
-			+"				<div class ='algorithmFormArea'></div>"
-			+"				"
+			+"				<p><i class='icon-refresh'></i> <a href='javascript://' class='reload'>Reload</a></p>"
 			+"			</div>"
 			+"			<br />"
 			+"			<div class='lastJobsResults'></div>"
 			+"			<div class='lastJobsResults2'></div>"
+			+"		</div>"
+			+"		<div class='span8 wpsClient-roundedArea wpsClient-panel'>"
+			+"			<div class='jobDetailsArea'></div>"
+			+"			<div class ='algorithmFormArea'></div>"
 			+"		</div>"
 			+"	</div>"
 	);

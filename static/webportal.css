@@ -1,5 +1,11 @@
-h1   {color:#99cc33}
+h1   {color:#08088A}
 h3   {color:#99cc33}
+
+/* font size (for wpsclient too) */
+h4 { font-size: 1.1vw; } 
+body, label, input, button, select, textarea { font-size: 1vw; }
+#showtm, #showcost {font-size: 1vw; }
+
 strong   {color:#3399cc}
 p   {color:black}
 h1   {font-family: Arial, Helvetica, sans-serif;}
@@ -8,9 +14,97 @@ strong   {font-family: Arial, Helvetica, sans-serif;}
 p   {font-family: Arial, Helvetica, sans-serif;}
 dl   {font-family: Arial, Helvetica, sans-serif;}
 
-/* The font, size and color of the text presented on the portal shall be defined here
- 
-   It is also possible to change the code lines above */
 
-body {background-image: url('/static/pics/ocean-background.jpg');} /* filepath of the background image*/
+/* app container (3 columns, ratio 1/6, 4/6, 1/6, by span2, span8 and span2) */
+#appContainer{
+    position: absolute;
+    height: 60%;
+    top: 28%;
+    left: 20px;
+    right: 20px;
+    margin-bottom: 20px;
+}
+/* height 100% propagation */
+#appContainer>.row-fluid{ height: 100%; }
+#appContainer>.row-fluid>.span8{ height: 100% }
+
+
+.fadein img { position:absolute; left:0; top:0; width:100%; height:19%;}
+.title h1 { position:absolute; font-size: 2vw; width: 100%; text-align: center; top: 18%; padding-left: 0px; padding-right: 0px; }
+
+#map {
+	border: 1px solid black;
+	height: 100%;
+	padding: 1px;
+}
+
+#map-canvas {
+  width: 100%;
+  height: 100%;
+}
+
+
+
+#container-math {
+    border: 1px solid black;
+    border-radius: 5px;
+    background: #eee;
+    padding: 10px;
+}
+#container-math button {
+	font-size: 0.8vw;
+	text-align: center;
+	height: 12.5%;
+}
+
+body {background-image: url('/static/pics/ocean-background.jpg');}
+
+/* wps client */
+.algorithmFormArea input{
+	width: 100%;
+	font-size: 1vw;
+}
+#runAsync { font-size: 1vw; }
+
+/* footer */
+.footer {
+	position: absolute;
+	left: 0px;
+	bottom: 0px;
+	height: 88px;
+	background-color:#FFFFFF;
+	margin: 0px auto;
+	width:100%;"
+	text-align: center;
+}
+
+
+
+/* RESPONSIVE LAYOUT FOR LANDSCAPE PHONES, PORTAL TABLE, SMARTPHONES, LOW WIDTH */
+@media (max-width: 767px) {
+	
+	h4 { font-size: 14px; }
+	 
+	body, label, input, button, select, textarea,
+	#runAsync, .algorithmFormArea input,
+	#showtm, #showcost, #container-math button {
+		font-size: 12px;
+	}
+	.title h1 { font-size: 16px; width: auto; margin: 0px }
+	
+	
+	.fadein img, .title h1, #appContainer, .footer { position: static }
+	
+	.fadein img{ height: 80px; }
+	#map {
+		height: 500px;
+	    margin-bottom: 20px;
+	}
+}
+
+
+
+
+
+
 
